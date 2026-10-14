@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 # Catálogo de causas válidas simuladas
 CAUSAS_VALIDAS = ["TECNICA", "CLIMA", "TRIPULACION", "OPERACIONAL"]
 
-def generar_vuelos_base(cantidad=20):
+def generar_vuelos_base(cantidad):
     """Genera un listado en memoria de vuelos programados para hoy."""
     vuelos = []
     hora_actual = datetime.now(timezone.utc)
