@@ -66,4 +66,7 @@ def iniciar_stream():
     connection.close()
 
 if __name__ == "__main__":
-    iniciar_stream()
+    try:
+        iniciar_stream()
+    except KeyboardInterrupt:
+        print("\n[*] Proceso detenido manualmente. Saliendo limpiamente...")
