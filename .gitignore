@@ -1,4 +1,25 @@
+# Variables de entorno y secretos (CT-02)
 .env
-/venv
+*.env
+.env.*
+!.env.example
+
+# Python y entornos virtuales
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Docusaurus
 website/node_modules/
 website/build/
+website/.docusaurus/
+
+# IDEs y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+

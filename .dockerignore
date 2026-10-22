@@ -1,0 +1,33 @@
+# Entornos virtuales y dependencias
+.venv/
+venv/
+env/
+ENV/
+
+# Bytecode y cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Variables de entorno y secretos (Cumplimiento CT-02)
+.env
+*.env
+.env.*
+!.env.example
+
+# Git
+.git/
+.gitignore
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Documentación web (Docusaurus) - no requerida en la imagen de producción
+website/
+
+# Documentación y reportes Markdown
+*.md

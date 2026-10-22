@@ -14,7 +14,6 @@ def generar_vuelos_base(cantidad):
         vuelos.append({
             "id_vuelo": i,
             "numero_vuelo": f"VU-{1000 + i}",
-            
             "salida_programada_utc": hora_actual + timedelta(minutes=random.randint(60, 300))
         })
     return vuelos
@@ -36,8 +35,9 @@ def generar_eventos_oooi(vuelo, tasa_defectos=0.1):
     retraso_minutos = (t_out - vuelo["salida_programada_utc"]).total_seconds() / 60
     causa_out = random.choice(CAUSAS_VALIDAS) if retraso_minutos > 15 else None
 
-    if tipo_defecto == "CAUSA_INVALIDA" and causa_out is not None:
-        causa_out = "ERROR_99" # Causa que no existe en el catálogo
+    if tipo_defecto == "CAUSA_INVALIDA":
+        # Asegurar que se inyecte la causa inválida para exigir los filtros de calidad
+        causa_out = "ERROR_99"
 
     if tipo_defecto == "PARADOJA_TIEMPO":
         # Restamos 24 horas al evento de llegada para simular un mal cálculo de zona horaria
