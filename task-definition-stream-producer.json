@@ -1,0 +1,57 @@
+{
+  "family": "vueladata-stream-producer-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::239700238526:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "stream-producer",
+      "image": "239700238526.dkr.ecr.us-east-1.amazonaws.com/vueladata/stream-producer:latest",
+      "essential": true,
+      "environment": [
+        {
+          "name": "RABBITMQ_HOST",
+          "value": "rabbitmq.vueladata.local"
+        },
+        {
+          "name": "RABBITMQ_PORT",
+          "value": "5672"
+        },
+        {
+          "name": "RABBITMQ_USER",
+          "value": "rabbit_admin"
+        },
+        {
+          "name": "RABBITMQ_PASS",
+          "value": "VuelaData_Rabbit2026!"
+        },
+        {
+          "name": "QUEUE_NAME",
+          "value": "eventos_oooi_queue"
+        },
+        {
+          "name": "STREAM_DELAY_SECONDS",
+          "value": "1"
+        },
+        {
+          "name": "TOTAL_VUELOS",
+          "value": "100"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/vueladata-stream-producer",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "stream-producer",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ]
+}
+
